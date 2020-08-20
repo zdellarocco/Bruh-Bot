@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const dotenv = require('dotenv');
+const Canvas = require('canvas')
 
 const client = new Discord.Client();
 
@@ -21,9 +22,17 @@ client.on('message', msg => {
     } catch(e) {
         console.log(e.stack)
     }
+});
+
+client.on("guildMemberAdd", m => {
+    const memberChannel = m.guild.channels.cache.find(channel => channel.name == "members")
+    const memberRole = m.guild.roles.cache.find(role => role.id == "563430153229828097")
+
+    memberChannel.send(`Welcome <@${m.user.id}>. Shut the fuck up.`);
+    m.roles.add(memberRole)
 })
 
-client.on("ready", () => {
+client.once("ready", () => {
     console.log(`${client.user.username}#${client.user.discriminator} is online.`)
 })
 
