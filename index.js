@@ -34,7 +34,6 @@ client.on("guildMemberAdd", m => {
     newMemberEmbed.setTimestamp();
     newMemberEmbed.setFooter("Developed by Zack#2222")
 
-    // memberChannel.send(`Welcome <@${m.user.id}>. Shut the fuck up.`);
     memberChannel.send(newMemberEmbed)
     m.roles.add(memberRole)
 })
@@ -48,7 +47,6 @@ client.on("guildMemberRemove", m => {
     memberEmbed.setDescription(`<@${m.user.id}>`)
     memberEmbed.setTimestamp();
 
-    // memberChannel.send(`<@${m.user.id}> got evicted. dam bro.`);
     memberChannel.send(memberEmbed)
 })
 
