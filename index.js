@@ -31,6 +31,12 @@ client.on("guildMemberAdd", m => {
     m.roles.add(memberRole)
 })
 
+client.on("guildMemberRemove", m => {
+    const memberChannel = m.guild.channels.cache.find(channel => channel.name == "members")
+
+    memberChannel.send(`<@${m.user.id}> got evicted. dam bro.`);
+})
+
 client.once("ready", () => {
     console.log(`${client.user.username}#${client.user.discriminator} is online.`)
 })
