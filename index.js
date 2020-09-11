@@ -50,18 +50,22 @@ client.on("guildMemberRemove", m => {
     memberChannel.send(memberEmbed)
 })
 
-client.once("messageUpdate", (oldMessage, newMessage) => {
-    const channel = oldMessage.guild.channels.cache.find(ch=>ch.name == "logs")
+// client.once("messageUpdate", async(oldMessage, newMessage) => {
 
-    const messageEmbed = new Discord.MessageEmbed();
-    messageEmbed.setColor("#0082ff")
-    messageEmbed.setTitle("Message Edited")
-    messageEmbed.addField("Old Message", `${oldMessage.content}`)
-    messageEmbed.addField("New Message", `${newMessage.content}`)
-    messageEmbed.setFooter("Developed by Zack#2222")
+//     const channel = oldMessage.guild.channels.cache.find(ch=>ch.name == "logs")
 
-    channel.send(messageEmbed)
-})
+//     const messageEmbed = new Discord.MessageEmbed();
+//     messageEmbed.setColor("#0082ff")
+//     messageEmbed.setTitle(`${oldMessage.author.username}#${oldMessage.author.discriminator} edited a message in #${oldMessage.channel.name}`)
+//     messageEmbed.addFields(
+// 		{ name: 'Old Message', value: `${oldMessage.content}`, inline: true },
+// 		{ name: 'New Message', value: `${newMessage.content}`, inline: true }
+// 	)
+//     messageEmbed.setFooter("Developed by Zack#2222")
+//     messageEmbed.setThumbnail(oldMessage.author.displayAvatarURL())
+
+//     channel.send(messageEmbed)
+// })
 
 client.once("ready", () => {
     console.log(`${client.user.username}#${client.user.discriminator} is online.`)
@@ -69,4 +73,4 @@ client.once("ready", () => {
     client.user.setActivity('Minervaa', {type: "LISTENING"})
 })
 
-client.login(process.env.TOKEN)
+client.login(process.env.DEVTOKEN)
