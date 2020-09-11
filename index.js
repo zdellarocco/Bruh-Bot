@@ -73,4 +73,4 @@ client.once("ready", () => {
     client.user.setActivity('Minervaa', {type: "LISTENING"})
 })
 
-client.login(process.env.DEVTOKEN)
+client.login(process.env.TOKEN)
