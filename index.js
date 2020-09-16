@@ -67,10 +67,23 @@ client.on("guildMemberRemove", m => {
 //     channel.send(messageEmbed)
 // })
 
+client.once("messageDelete", deletedMsg => {
+    const logChannel = deletedMsg.guild.channels.cache.find(ch => ch.name == "logs");
+
+    const msgEmbed = new Discord.MessageEmbed();
+    msgEmbed.setColor("#0082ff");
+    msgEmbed.setTitle(`Message deleted in #${deletedMsg.channel.name} by ${deletedMsg.author.username}`);
+    msgEmbed.addField("Deleted Message", deletedMsg.content);
+    msgEmbed.setFooter("Developed byt Zack#2222");
+
+    logChannel.send(msgEmbed)
+
+});
+
 client.once("ready", () => {
     console.log(`${client.user.username}#${client.user.discriminator} is online.`)
 
     client.user.setActivity('Minervaa', {type: "LISTENING"})
 })
 
-client.login(process.env.TOKEN)
+client.login(process.env.DEVTOKEN)
