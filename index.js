@@ -50,22 +50,22 @@ client.on("guildMemberRemove", m => {
     memberChannel.send(memberEmbed)
 })
 
-// client.once("messageUpdate", async(oldMessage, newMessage) => {
+client.on("messageUpdate", async(oldMessage, newMessage) => {
 
-//     const channel = oldMessage.guild.channels.cache.find(ch=>ch.name == "logs")
+    const channel = oldMessage.guild.channels.cache.find(ch=>ch.name == "logs")
 
-//     const messageEmbed = new Discord.MessageEmbed();
-//     messageEmbed.setColor("#0082ff")
-//     messageEmbed.setTitle(`${oldMessage.author.username}#${oldMessage.author.discriminator} edited a message in #${oldMessage.channel.name}`)
-//     messageEmbed.addFields(
-// 		{ name: 'Old Message', value: `${oldMessage.content}`, inline: true },
-// 		{ name: 'New Message', value: `${newMessage.content}`, inline: true }
-// 	)
-//     messageEmbed.setFooter("Developed by Zack#2222")
-//     messageEmbed.setThumbnail(oldMessage.author.displayAvatarURL())
+    const messageEmbed = new Discord.MessageEmbed();
+    messageEmbed.setColor("#0082ff")
+    messageEmbed.setTitle(`${oldMessage.author.username}#${oldMessage.author.discriminator} edited a message in #${oldMessage.channel.name}`)
+    messageEmbed.addFields(
+		{ name: 'Old Message', value: `${oldMessage.content}`, inline: true },
+		{ name: 'New Message', value: `${newMessage.content}`, inline: true }
+	)
+    messageEmbed.setFooter("Developed by Zack#2222")
+    messageEmbed.setThumbnail(oldMessage.author.displayAvatarURL())
 
-//     channel.send(messageEmbed)
-// })
+    await channel.send(messageEmbed)
+})
 
 client.on("messageDelete", async(deletedMsg) => {
     const logChannel = deletedMsg.guild.channels.cache.find(ch => ch.name == "logs");
