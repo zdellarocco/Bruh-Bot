@@ -67,7 +67,7 @@ client.on("guildMemberRemove", m => {
 //     channel.send(messageEmbed)
 // })
 
-client.once("messageDelete", deletedMsg => {
+client.on("messageDelete", async(deletedMsg) => {
     const logChannel = deletedMsg.guild.channels.cache.find(ch => ch.name == "logs");
 
     const msgEmbed = new Discord.MessageEmbed();
@@ -76,7 +76,7 @@ client.once("messageDelete", deletedMsg => {
     msgEmbed.addField("Deleted Message", deletedMsg.content);
     msgEmbed.setFooter("Developed byt Zack#2222");
 
-    logChannel.send(msgEmbed)
+    await logChannel.send(msgEmbed)
 
 });
 
