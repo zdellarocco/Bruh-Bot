@@ -1,7 +1,10 @@
 const Discord = require('discord.js')
 
 exports.run = (client, msg, args) => {
-
+    const banUser = msg.mentions.members.first();
+    const banReason = args[1]
+    const logChannel = msg.guild.channels.cache.find(ch=>ch.name=="logs");
+    
     const noPermEmbed = new Discord.MessageEmbed();
     noPermEmbed.setColor("#ff0000");
     noPermEmbed.setTitle("Error")
@@ -12,19 +15,25 @@ exports.run = (client, msg, args) => {
     noPermEmbed2.setTitle("Error")
     noPermEmbed2.setDescription("That user cannot be banned")
 
-    const banUser = msg.mentions.members.first();
-    const banReason = args[1]
-
     if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(noPermEmbed)
     if(banUser.hasPermission("KICK_MEMBERS")) return msg.channel.send(noPermEmbed2)
 
-    if(!kickUser) return msg.channel.send("**That user does not exist**")
+    if(!banUser) return msg.channel.send("**That user does not exist**")
 
     if(!args[0]) return msg.channel.send("**Please specify a user**")
+
+    const banEmbed = new Discord.MessageEmbed();
+    banEmbed.setColor("#ff0000");
+    banEmbed.setThumbnailI(banUser.user.displayAvatarURL())
+    banEmbed.setTitle(`Member Banned by ${msg.author.username}#${msg.author.discriminator}`)
+    banEmbed.setDescription(`<@${banUser.user.id}>`)
+    banEmbed.setFooter("Developed by Zack#2222")
 
     if(banReason) {
         banUser.ban()
     } else {
         banUser.ban(banReason)
     }
+
+    logChannel.send(banEmbed);
 }
