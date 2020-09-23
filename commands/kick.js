@@ -1,6 +1,9 @@
 const Discord = require('discord.js')
 
 exports.run = (client, msg, args, Discord) => {
+    const kickUser = msg.mentions.members.first();
+    const kickReason = args[1];
+    const loggingChannel = msg.guild.channels.cache.find(ch => ch.name == "logs")
 
     const noPermEmbed = new Discord.MessageEmbed();
     noPermEmbed.setColor("#ff0000");
@@ -12,19 +15,25 @@ exports.run = (client, msg, args, Discord) => {
     noPermEmbed2.setTitle("Error")
     noPermEmbed2.setDescription("That user cannot be kicked")
 
-    const kickUser = msg.mentions.members.first();
-    const kickReason = args[1];
-
     if(!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(noPermEmbed)
     if(kickUser.hasPermission("KICK_MEMBERS")) return msg.channel.send(noPermEmbed2)
 
-    if(!kickUser) return msg.channel.send("There is no user.");
+    if(!kickUser) return msg.channel.send("**That user does not exist**");
 
-    if(!args[0]) return msg.channel.send("You did not specify a user");
+    if(!args[0]) return msg.channel.send("**Please specify a user**");
+
+    const kickEmbed = new Discord.MessageEmbed();
+    kickEmbed.setColor("#ffff00");
+    kickEmbed.setThumbnail(kickUser.user.displayAvatarURL());
+    kickEmbed.setTitle(`Member kicked by ${msg.author.username}#${msg.author.discriminator}`);
+    kickEmbed.setDescription(`<@${kickUser.user.id}>`);
+    kickEmbed.setFooter("Developed by Zack#2222");
 
     if(!kickReason) {
         kickUser.kick();
     } else {
         kickUser.kick(kickReason);
     }
+
+    loggingChannel.send(kickEmbed)
 }

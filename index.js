@@ -5,9 +5,10 @@ const client = new Discord.Client();
 
 dotenv.config();
 
-const prefix = '>';
+ const prefix = '>';
 
 client.on('message', msg => {
+
     const args = msg.content.slice(prefix.length).trim().split(' ');
     const cmd = args.shift().toLowerCase();
 
@@ -63,6 +64,8 @@ client.on("messageUpdate", async(oldMessage, newMessage) => {
 	)
     messageEmbed.setFooter("Developed by Zack#2222")
     messageEmbed.setThumbnail(oldMessage.author.displayAvatarURL())
+
+    if(msg.content.startsWith("https://")) return;
 
     await channel.send(messageEmbed)
 })
