@@ -28,7 +28,7 @@ exports.run = (client, msg, args) => {
     banEmbed.setThumbnailI(banUser.user.displayAvatarURL())
     banEmbed.setTitle(`Member Banned by ${msg.author.username}#${msg.author.discriminator}`)
     banEmbed.setDescription(`<@${banUser.user.id}>`)
-    banEmbed.setFooter(`Developed by ${process.env.USERNAME}`)
+    banEmbed.setFooter(`Developed by Minervaa#2222`)
 
     if(banReason) {
         banUser.ban()

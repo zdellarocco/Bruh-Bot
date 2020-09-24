@@ -33,7 +33,7 @@ client.on("guildMemberAdd", m => {
     newMemberEmbed.setTitle("New Member Joined")
     newMemberEmbed.setDescription(`<@${m.user.id}>`)
     newMemberEmbed.setTimestamp();
-    newMemberEmbed.setFooter(`Developed by ${process.env.USERNAME}`)
+    newMemberEmbed.setFooter(`Developed by Minervaa#2222`)
 
     memberChannel.send(newMemberEmbed)
     m.roles.add(memberRole)
@@ -46,7 +46,7 @@ client.on("guildMemberRemove", m => {
     memberEmbed.setColor("#ff0000")
     memberEmbed.setTitle("Member Left")
     memberEmbed.setDescription(`<@${m.user.id}>`)
-    memberEmbed.setFooter(`Developed by ${process.env.USERNAME}`)
+    memberEmbed.setFooter(`Developed by Minervaa#2222`)
     memberEmbed.setTimestamp();
 
     memberChannel.send(memberEmbed)
@@ -63,7 +63,7 @@ client.on("messageUpdate", async(oldMessage, newMessage) => {
 		{ name: 'Old Message', value: `${oldMessage.content}`, inline: true },
 		{ name: 'New Message', value: `${newMessage.content}`, inline: true }
 	)
-    messageEmbed.setFooter(`Developed by ${process.env.USERNAME}`)
+    messageEmbed.setFooter(`Developed by Minervaa#2222`)
     messageEmbed.setThumbnail(oldMessage.author.displayAvatarURL())
 
     if(oldMessage.attachments > 0) return;
@@ -79,7 +79,7 @@ client.on("messageDelete", async(deletedMsg) => {
     msgEmbed.setColor("#0082ff");
     msgEmbed.setTitle(`Message deleted in #${deletedMsg.channel.name} by ${deletedMsg.author.username}`);
     msgEmbed.addField("Deleted Message", deletedMsg.content);
-    msgEmbed.setFooter(`Developed by ${process.env.USERNAME}`);
+    msgEmbed.setFooter(`Developed by Minervaa#2222`);
 
     await logChannel.send(msgEmbed)
 

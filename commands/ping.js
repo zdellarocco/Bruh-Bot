@@ -9,7 +9,7 @@ exports.run = (client, msg, args, Discord) => {
         const pingEmbed = new Discord.MessageEmbed()
         .setColor("#4287f5")
         .setThumbnail(msg.author.avatarURL)
-        .setFooter(`Developed by ${process.env.USERNAME}`)
+        .setFooter(`Developed by Minervaa#2222`)
         .addField("Ping", ping);
 
         m.delete()

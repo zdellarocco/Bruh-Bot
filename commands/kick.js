@@ -28,7 +28,7 @@ exports.run = (client, msg, args, Discord) => {
     kickEmbed.setThumbnail(kickUser.user.displayAvatarURL());
     kickEmbed.setTitle(`Member kicked by ${msg.author.username}#${msg.author.discriminator}`);
     kickEmbed.setDescription(`<@${kickUser.user.id}>`);
-    kickEmbed.setFooter(`Developed by ${process.env.USERNAME}`);
+    kickEmbed.setFooter(`Developed by Minervaa#2222`);
 
     if(!kickReason) {
         kickUser.kick();

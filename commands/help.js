@@ -8,7 +8,7 @@ exports.run = (client, msg, args, Discord) => {
     .setTitle("Help")
     .setColor("#03a5fc")
     .addField("**Help command is a work in progress!**", "*Please come back when it's finished!*")
-    .setFooter(`Developed by ${process.env.USERNAME}`);
+    .setFooter(`Developed by Minervaa#2222`);
 
     msg.author.send(helpEmbed)
 }
