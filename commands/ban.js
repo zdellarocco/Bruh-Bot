@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
-
+const dotenv = require('dotenv')
+dotenv.config();
 exports.run = (client, msg, args) => {
     const banUser = msg.mentions.members.first();
     const banReason = args[1]
@@ -27,7 +28,7 @@ exports.run = (client, msg, args) => {
     banEmbed.setThumbnailI(banUser.user.displayAvatarURL())
     banEmbed.setTitle(`Member Banned by ${msg.author.username}#${msg.author.discriminator}`)
     banEmbed.setDescription(`<@${banUser.user.id}>`)
-    banEmbed.setFooter("Developed by Zack#2222")
+    banEmbed.setFooter(`Developed by ${process.env.USERNAME}`)
 
     if(banReason) {
         banUser.ban()

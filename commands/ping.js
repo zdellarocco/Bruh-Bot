@@ -1,3 +1,6 @@
+const dotenv = require('dotenv')
+dotenv.config();
+
 exports.run = (client, msg, args, Discord) => {
     msg.channel.send("**Pinging...**").then(m => {
         const ping = m.createdTimestamp - msg.createdTimestamp;
@@ -6,7 +9,7 @@ exports.run = (client, msg, args, Discord) => {
         const pingEmbed = new Discord.MessageEmbed()
         .setColor("#4287f5")
         .setThumbnail(msg.author.avatarURL)
-        .setFooter("Developed by Zack#2222")
+        .setFooter(`Developed by ${process.env.USERNAME}`)
         .addField("Ping", ping);
 
         m.delete()

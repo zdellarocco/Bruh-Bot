@@ -1,3 +1,6 @@
+const dotenv = require('dotenv')
+dotenv.config();
+
 exports.run = (client, msg, args, Discord) => {
     msg.react("📬")
 
@@ -5,7 +8,7 @@ exports.run = (client, msg, args, Discord) => {
     .setTitle("Help")
     .setColor("#03a5fc")
     .addField("**Help command is a work in progress!**", "*Please come back when it's finished!*")
-    .setFooter("Developed by Zack#2222");
+    .setFooter(`Developed by ${process.env.USERNAME}`);
 
     msg.author.send(helpEmbed)
 }

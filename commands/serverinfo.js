@@ -1,4 +1,6 @@
 const Discord = require('discord.js')
+const dotenv = require('dotenv')
+dotenv.config();
 
 exports.run = (client, msg, args) => {
     const serverEmbed = new Discord.MessageEmbed();
@@ -10,6 +12,7 @@ exports.run = (client, msg, args) => {
     serverEmbed.addField("Member Count", `This server has ${msg.guild.memberCount} members`);
     serverEmbed.addField("Emoji Count", `This server has ${msg.guild.emojis.cache.size} emojis`);
     serverEmbed.addField("Roles Count", `This server has ${msg.guild.roles.cache.size} roles.`);
+    serverEmbed.setFooter(`Developed by ${process.env.USERNAME}`)
 
     msg.channel.send(serverEmbed)
 }

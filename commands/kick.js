@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
-
+const dotenv = require('dotenv')
+dotenv.config();
 exports.run = (client, msg, args, Discord) => {
     const kickUser = msg.mentions.members.first();
     const kickReason = args[1];
@@ -27,7 +28,7 @@ exports.run = (client, msg, args, Discord) => {
     kickEmbed.setThumbnail(kickUser.user.displayAvatarURL());
     kickEmbed.setTitle(`Member kicked by ${msg.author.username}#${msg.author.discriminator}`);
     kickEmbed.setDescription(`<@${kickUser.user.id}>`);
-    kickEmbed.setFooter("Developed by Zack#2222");
+    kickEmbed.setFooter(`Developed by ${process.env.USERNAME}`);
 
     if(!kickReason) {
         kickUser.kick();
