@@ -31,7 +31,7 @@ client.on("guildMemberAdd", m => {
     const newMemberEmbed = new Discord.MessageEmbed();
     newMemberEmbed.setColor("#0080ff")
     newMemberEmbed.setTitle("New Member Joined")
-    newMemberEmbed.setDescription(`<@${m.user.id}>`)
+    newMemberEmbed.setDescription(`${m.user.username}`)
     newMemberEmbed.setTimestamp();
     newMemberEmbed.setFooter(`Developed by Minervaa#2222`)
 
@@ -45,7 +45,7 @@ client.on("guildMemberRemove", m => {
     const memberEmbed = new Discord.MessageEmbed();
     memberEmbed.setColor("#ff0000")
     memberEmbed.setTitle("Member Left")
-    memberEmbed.setDescription(`<@${m.user.id}>`)
+    memberEmbed.setDescription(`${m.user.username}`)
     memberEmbed.setFooter(`Developed by Minervaa#2222`)
     memberEmbed.setTimestamp();
 
